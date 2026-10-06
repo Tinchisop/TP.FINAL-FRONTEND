@@ -1,20 +1,24 @@
+import styles from './MealCard.module.css';
+
 // Card reutilizable con los datos principales de una receta
 function MealCard({ titulo, imagen, categoria, origen, etiquetas }) {
   return (
-    <article>
-      <img src={`${imagen}/medium`} alt={titulo} loading="lazy" />
-      <h3>{titulo}</h3>
-      <ul>
-        <li><span>Categoría:</span> {categoria}</li>
-        <li><span>Origen:</span> {origen}</li>
-      </ul>
-      {etiquetas.length > 0 && (
-        <div>
-          {etiquetas.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-      )}
+    <article className={styles.card}>
+      <img className={styles.image} src={`${imagen}/medium`} alt={titulo} loading="lazy" />
+      <div className={styles.body}>
+        <h3 className={styles.title}>{titulo}</h3>
+        <ul className={styles.meta}>
+          <li><span>Categoría:</span> {categoria}</li>
+          <li><span>Origen:</span> {origen}</li>
+        </ul>
+        {etiquetas.length > 0 && (
+          <div className={styles.tags}>
+            {etiquetas.map((tag) => (
+              <span key={tag} className={styles.tag}>{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
     </article>
   );
 }

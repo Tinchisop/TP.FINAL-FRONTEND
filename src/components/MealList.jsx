@@ -1,9 +1,10 @@
 import MealCard from './MealCard.jsx';
+import styles from './MealList.module.css';
 
 // Recibe el array de recetas y arma una card por cada una
 function MealList({ meals }) {
   return (
-    <section>
+    <section className={styles.grid}>
       {meals.map((meal) => (
         <MealCard
           key={meal.idMeal}

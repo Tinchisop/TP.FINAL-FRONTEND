@@ -10,10 +10,10 @@ function App() {
   }, []);
 
   return (
-    <>
+    <main style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px' }}>
       <h1>Recetario</h1>
       <MealList meals={recetas} />
-    </>
+    </main>
   );
 }
 
