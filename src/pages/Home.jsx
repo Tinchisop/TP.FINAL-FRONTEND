@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBar.jsx';
 import MealList from '../components/MealList.jsx';
 import Pagination from '../components/Pagination.jsx';
+import SkeletonList from '../components/SkeletonList.jsx';
 import StatusMessage from '../components/StatusMessage.jsx';
 import { searchMeals } from '../services/mealApi.js';
 import styles from './Home.module.css';
@@ -52,7 +53,7 @@ function Home() {
 
   let contenido;
   if (cargando) {
-    contenido = <StatusMessage tipo="loading" mensaje="Cargando recetas..." />;
+    contenido = <SkeletonList cantidad={RECETAS_POR_PAGINA} />;
   } else if (error) {
     contenido = <StatusMessage tipo="error" mensaje={`No se pudieron cargar las recetas. ${error}`} />;
   } else if (recetas.length === 0) {
