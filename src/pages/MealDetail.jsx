@@ -1,23 +1,52 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import StatusMessage from '../components/StatusMessage.jsx';
 import { getMealById, getIngredients } from '../services/mealApi.js';
 import styles from './MealDetail.module.css';
 
 function MealDetail() {
   const { id } = useParams();
   const [receta, setReceta] = useState(null);
+  const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     let cancelado = false;
-    getMealById(id).then((resultado) => {
-      if (!cancelado) setReceta(resultado);
-    });
+
+    async function cargarReceta() {
+      setCargando(true);
+      setError(null);
+      try {
+        const resultado = await getMealById(id);
+        if (cancelado) return;
+        if (!resultado) {
+          setError('La receta que buscás no existe.');
+        } else {
+          setReceta(resultado);
+        }
+      } catch (err) {
+        if (!cancelado) setError(`No se pudo cargar la receta. ${err.message}`);
+      } finally {
+        if (!cancelado) setCargando(false);
+      }
+    }
+
+    cargarReceta();
     return () => {
       cancelado = true;
     };
   }, [id]);
 
-  if (!receta) return <p>Cargando receta...</p>;
+  if (cargando) return <StatusMessage tipo="loading" mensaje="Cargando receta..." />;
+
+  if (error) {
+    return (
+      <>
+        <StatusMessage tipo="error" mensaje={error} />
+        <Link to="/" className={styles.back}>← Volver al inicio</Link>
+      </>
+    );
+  }
 
   const ingredientes = getIngredients(receta);
   const etiquetas = receta.strTags ? receta.strTags.split(',').filter(Boolean) : [];
