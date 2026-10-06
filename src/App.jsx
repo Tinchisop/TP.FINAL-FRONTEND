@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import MealList from './components/MealList.jsx';
 import { searchMeals } from './services/mealApi.js';
 
 function App() {
@@ -11,11 +12,7 @@ function App() {
   return (
     <>
       <h1>Recetario</h1>
-      <ul>
-        {recetas.map((receta) => (
-          <li key={receta.idMeal}>{receta.strMeal}</li>
-        ))}
-      </ul>
+      <MealList meals={recetas} />
     </>
   );
 }
