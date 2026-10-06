@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBar.jsx';
 import MealList from '../components/MealList.jsx';
+import Pagination from '../components/Pagination.jsx';
 import StatusMessage from '../components/StatusMessage.jsx';
 import { searchMeals } from '../services/mealApi.js';
 import styles from './Home.module.css';
+
+const RECETAS_POR_PAGINA = 8;
 
 function Home() {
   const [busqueda, setBusqueda] = useState('');
   const [recetas, setRecetas] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
+  const [pagina, setPagina] = useState(1);
 
   // Busca mientras el usuario escribe, esperando 400 ms desde la última tecla
   useEffect(() => {
@@ -20,7 +24,10 @@ function Home() {
       setError(null);
       try {
         const resultado = await searchMeals(busqueda.trim());
-        if (!cancelado) setRecetas(resultado);
+        if (!cancelado) {
+          setRecetas(resultado);
+          setPagina(1);
+        }
       } catch (err) {
         if (!cancelado) setError(err.message);
       } finally {
@@ -33,6 +40,15 @@ function Home() {
       clearTimeout(timer);
     };
   }, [busqueda]);
+
+  const totalPaginas = Math.ceil(recetas.length / RECETAS_POR_PAGINA);
+  const inicio = (pagina - 1) * RECETAS_POR_PAGINA;
+  const recetasPagina = recetas.slice(inicio, inicio + RECETAS_POR_PAGINA);
+
+  const cambiarPagina = (nuevaPagina) => {
+    setPagina(nuevaPagina);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   let contenido;
   if (cargando) {
@@ -47,7 +63,8 @@ function Home() {
         <p className={styles.count}>
           {recetas.length} {recetas.length === 1 ? 'receta encontrada' : 'recetas encontradas'}
         </p>
-        <MealList meals={recetas} />
+        <MealList meals={recetasPagina} />
+        <Pagination paginaActual={pagina} totalPaginas={totalPaginas} onCambiarPagina={cambiarPagina} />
       </>
     );
   }
