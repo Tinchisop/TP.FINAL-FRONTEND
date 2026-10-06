@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import styles from './MealCard.module.css';
 
 // Card reutilizable con los datos principales de una receta
-function MealCard({ titulo, imagen, categoria, origen, etiquetas }) {
+function MealCard({ id, titulo, imagen, categoria, origen, etiquetas }) {
   return (
     <article className={styles.card}>
       <img className={styles.image} src={`${imagen}/medium`} alt={titulo} loading="lazy" />
@@ -18,6 +19,9 @@ function MealCard({ titulo, imagen, categoria, origen, etiquetas }) {
             ))}
           </div>
         )}
+        <Link to={`/receta/${id}`} className={styles.button}>
+          Ver receta
+        </Link>
       </div>
     </article>
   );

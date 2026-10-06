@@ -59,3 +59,18 @@
   padding: 3px 10px;
   border-radius: 999px;
 }
+
+.button {
+  margin-top: auto;
+  text-align: center;
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.button:hover {
+  background: var(--color-primary-dark);
+}

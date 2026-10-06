@@ -8,6 +8,7 @@ function MealList({ meals }) {
       {meals.map((meal) => (
         <MealCard
           key={meal.idMeal}
+          id={meal.idMeal}
           titulo={meal.strMeal}
           imagen={meal.strMealThumb}
           categoria={meal.strCategory}
