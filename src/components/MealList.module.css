@@ -3,3 +3,18 @@
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 22px;
 }
+
+/* En celular, dos columnas para ver más recetas sin tanto scroll */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+/* En celulares muy angostos vuelve a una sola columna */
+@media (max-width: 340px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

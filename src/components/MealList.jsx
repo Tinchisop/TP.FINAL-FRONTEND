@@ -13,7 +13,7 @@ function MealList({ meals }) {
           titulo={meal.strMeal}
           imagen={meal.strMealThumb}
           categoria={meal.strCategory}
-          origen={meal.strArea}
+          origen={meal.strArea || 'Desconocido'}
           etiquetas={meal.strTags ? meal.strTags.split(',').filter(Boolean) : []}
         />
       ))}

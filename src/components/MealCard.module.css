@@ -125,3 +125,59 @@
     transform: translateY(0);
   }
 }
+
+/* En pantallas táctiles no hay hover: se evita que la card quede "levantada" al tocarla */
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow);
+  }
+
+  .card:hover .image {
+    transform: none;
+  }
+}
+
+/* Versión compacta de la card para celular */
+@media (max-width: 600px) {
+  .body {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+
+  .meta {
+    font-size: 0.8rem;
+  }
+
+  /* La categoría ya se ve en la etiqueta sobre la foto */
+  .meta li:first-child {
+    display: none;
+  }
+
+  .badge {
+    top: 6px;
+    left: 6px;
+    font-size: 0.68rem;
+    padding: 3px 8px;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    padding: 2px 8px;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-height: 44px;
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+}
