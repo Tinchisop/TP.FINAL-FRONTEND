@@ -1,19 +1,14 @@
-import { useEffect, useState } from 'react';
-import MealList from './components/MealList.jsx';
-import { searchMeals } from './services/mealApi.js';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout.jsx';
+import Home from './pages/Home.jsx';
 
 function App() {
-  const [recetas, setRecetas] = useState([]);
-
-  useEffect(() => {
-    searchMeals().then(setRecetas);
-  }, []);
-
   return (
-    <main style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px' }}>
-      <h1>Recetario</h1>
-      <MealList meals={recetas} />
-    </main>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+      </Route>
+    </Routes>
   );
 }
 
