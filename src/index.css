@@ -29,3 +29,20 @@ img {
   max-width: 100%;
   display: block;
 }
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Evita que palabras muy largas rompan el ancho en pantallas chicas */
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}

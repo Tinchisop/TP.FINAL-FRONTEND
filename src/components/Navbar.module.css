@@ -45,3 +45,20 @@
   background: rgba(255, 255, 255, 0.25);
   font-weight: 600;
 }
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 10px 12px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .link,
+  .active {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+}

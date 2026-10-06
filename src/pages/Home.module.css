@@ -17,3 +17,13 @@
   color: var(--color-muted);
   margin: 0 0 16px;
 }
+
+@media (max-width: 600px) {
+  .hero {
+    margin-bottom: 16px;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+}

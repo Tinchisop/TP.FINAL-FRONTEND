@@ -9,3 +9,10 @@
 .footer p {
   margin: 0;
 }
+
+@media (max-width: 600px) {
+  .footer {
+    font-size: 0.8rem;
+    padding: 14px 12px calc(14px + env(safe-area-inset-bottom));
+  }
+}
