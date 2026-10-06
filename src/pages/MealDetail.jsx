@@ -53,7 +53,9 @@ function MealDetail() {
 
   return (
     <article className={styles.detail}>
-      <Link to="/" className={styles.back}>← Volver a las recetas</Link>
+      <Link to="/" className={styles.back}>
+        <span className={styles.backArrow} aria-hidden="true">←</span> Volver a las recetas
+      </Link>
 
       <div className={styles.top}>
         <img className={styles.image} src={receta.strMealThumb} alt={receta.strMeal} />
@@ -81,7 +83,7 @@ function MealDetail() {
         <h2>Ingredientes</h2>
         <ul className={styles.ingredients}>
           {ingredientes.map((ing, index) => (
-            <li key={`${ing.name}-${index}`}>
+            <li key={`${ing.name}-${index}`} style={{ '--orden': index }}>
               <strong>{ing.measure}</strong> {ing.name}
             </li>
           ))}
