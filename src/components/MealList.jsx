@@ -5,10 +5,11 @@ import styles from './MealList.module.css';
 function MealList({ meals }) {
   return (
     <section className={styles.grid}>
-      {meals.map((meal) => (
+      {meals.map((meal, index) => (
         <MealCard
           key={meal.idMeal}
           id={meal.idMeal}
+          orden={index}
           titulo={meal.strMeal}
           imagen={meal.strMealThumb}
           categoria={meal.strCategory}
