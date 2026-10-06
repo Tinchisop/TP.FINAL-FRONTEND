@@ -12,3 +12,8 @@
   margin: 0;
   color: var(--color-muted);
 }
+
+.count {
+  color: var(--color-muted);
+  margin: 0 0 16px;
+}
