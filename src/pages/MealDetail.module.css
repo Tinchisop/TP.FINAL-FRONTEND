@@ -164,3 +164,74 @@
     transform: scale(1);
   }
 }
+
+/* Detalle de la receta en celular */
+@media (max-width: 600px) {
+  .detail {
+    gap: 16px;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 44px;
+  }
+
+  .top {
+    gap: 16px;
+  }
+
+  .image {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .info h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  /* Los datos van uno al lado del otro para ocupar menos alto */
+  .meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    font-size: 0.9rem;
+  }
+
+  .video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .section {
+    padding: 16px;
+  }
+
+  .section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .section p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .ingredients {
+    padding-left: 18px;
+    line-height: 1.9;
+  }
+}
+
+@media (hover: none) {
+  .video:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
