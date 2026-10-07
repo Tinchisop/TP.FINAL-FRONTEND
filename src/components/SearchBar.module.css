@@ -38,3 +38,19 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 600px) {
+  .wrapper {
+    margin-bottom: 18px;
+  }
+
+  .icon {
+    left: 14px;
+  }
+
+  /* 16px como mínimo: con menos, el iPhone hace zoom solo al tocar el input */
+  .input {
+    padding: 12px 16px 12px 42px;
+    font-size: 16px;
+  }
+}

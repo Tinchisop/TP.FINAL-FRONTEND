@@ -35,3 +35,25 @@
 .info {
   color: var(--color-muted);
 }
+
+/* En celular todo entra en una sola fila y los botones son fáciles de tocar */
+@media (max-width: 600px) {
+  .pagination {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .button {
+    min-height: 44px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .info {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+}
